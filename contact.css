@@ -1,0 +1,46 @@
+section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+#zone-contact {
+    width: 400px;
+    height: 450px;
+    padding: 10px;
+    background-color: rgb(91, 91, 240);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#zone-contact input{
+    width: 100%;
+    height: 30px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+input #login-message{
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+#zone-contact button {
+    width: 100%;
+    height: 30px;
+    background-color: #9da7f1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
