@@ -4,7 +4,6 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST['nom'];
-    $email = $_POST['email'];
     $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_BCRYPT);
     $photo_profil = '';
 
@@ -25,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insertion des données de l'utilisateur dans la base de données avec MySQLi
-    $sql = "INSERT INTO utilisateurs (nom, email, mot_de_passe, photo_profil) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO utilisateurs (nom, mot_de_passe, photo_profil) VALUES (?, ?, ?)";
     $stmt = $mysqli->prepare($sql);
 
     if (!$stmt) {
@@ -33,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // 'ssss' indique que les 4 valeurs sont des chaînes de caractères
-    $stmt->bind_param("ssss", $nom, $email, $mot_de_passe, $photo_profil);
+    $stmt->bind_param("sss", $nom, $mot_de_passe, $photo_profil);
 
     if ($stmt->execute()) {
         echo "Inscription réussie!";
@@ -47,5 +46,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <br>
-<a href="index.php">Retour à l'accueil pour se connecter ou s'inscrire</a>
+<a href="page_connexion.php">Retour à l'accueil pour se connecter ou s'inscrire</a>
 

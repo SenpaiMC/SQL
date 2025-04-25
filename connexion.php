@@ -36,4 +36,4 @@
 
 <br>
 <br>
-<a href="index.php">Retour à l'accueil pour se connecter</a>
+<a href="page_connexion.php">Retour à l'accueil pour se connecter</a>
