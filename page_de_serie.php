@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fileTmpPath = $_FILES['cover']['tmp_name'];
             $fileName = "cover" . basename($_FILES['cover']['name']);
             $filePath = $folder_name . $fileName;
+
             
 
             if (move_uploaded_file($fileTmpPath, $filePath)) {

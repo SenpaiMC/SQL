@@ -46,5 +46,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <br>
-<a href="page_connexion.php">Retour à l'accueil pour se connecter ou s'inscrire</a>
+<a href="Form_connexion.php">Retour à l'accueil pour se connecter ou s'inscrire</a>
 

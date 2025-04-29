@@ -1,0 +1,42 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #aa8181;
+}
+
+#serie{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 20% 60%;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0;
+    background-color: #727a88;
+}
+
+.page_serie{
+    width: 100%;
+    height: auto;
+    text-align: start;
+    padding: 10px 0;
+}
+
+#image img{
+    width: 100%;
+    height: auto;
+    text-align: start;
+    padding: 10px 0;
+}
+
+#description{
+    width: 100%;
+    height: auto;
+    text-align: start;
+    border: 2px solid #2454a7;
+}
+
+
+

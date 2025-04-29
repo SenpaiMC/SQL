@@ -7,11 +7,12 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index_style.css">
+    <!-- <link rel="stylesheet" href="index_style.css"> -->
     <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="espace_user.css">
     <link rel="stylesheet" href="includes.css">
     <link rel="stylesheet" href="includes/header.css">
+    <link rel="stylesheet" href="fonction.js">
     <title>Mon site</title>
 </head>
 <body>
@@ -28,7 +29,7 @@ session_start();
             </div>
 
             <div class="logo-container" id="logo2"> 
-                <form class="recherche" action="#" method="GET">
+                <form class="recherche" action="fonction.php" method="GET">
                     <input type="text" name="search" class="barre-de-recherche"  placeholder="Rechercher...">
                     <button type="submit" class="recherche-btn"><img src="logo\search.png" alt=""></button>
                 </form>
@@ -58,7 +59,7 @@ session_start();
             
             
             <div class="logo-container" id="logo2"> 
-                <form class="recherche" action="#" method="GET">
+                <form class="recherche" action="fonction.php" method="GET">
                     <input type="text" name="search" class="barre-de-recherche"  placeholder="Rechercher...">
                     <button type="submit" class="recherche-btn"><img src="logo\search.png" alt=""></button>
                 </form>
@@ -73,7 +74,7 @@ session_start();
             </div>
             
             <div class="logo-container" id="logo5"> 
-                <a href="page_connexion.php"><img src="logo\User.png" alt=""></a>
+                <a href="form_connexion.php"><img src="logo\User.png" alt=""></a>
             </div>
         </div>
         

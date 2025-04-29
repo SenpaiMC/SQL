@@ -1,0 +1,90 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #acdab8;
+}
+
+#profil{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* flex-direction: column; */
+    padding: 10px 0;
+    background-color: #727a88;
+}
+
+#profil a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+#profil a:hover {
+    color: #000;
+}
+
+#zone-connexion{
+    width: 550px;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #EF7F7D;
+}
+
+#zone-connexion input {
+    width: 70%;
+    height: 60px;
+    margin: 3% auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #acdab8;
+    outline: none;
+}
+
+
+#zone-connexion button {
+    width: 60%;
+    height: 50px;
+    background-color: #9da7f1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5%;
+    font-size: 20px;
+    cursor: pointer;
+}
+/* #zone-inscription{
+    width: 550px;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f03c39;
+}
+
+#zone-inscription input {
+    width: 70%;
+    height: 60px;
+    margin: 3% auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #acdab8;
+    outline: none;
+}
+
+#zone-inscription button {
+    width: 60%;
+    height: 50px;
+    background-color: #9da7f1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+} */

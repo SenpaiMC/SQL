@@ -2,6 +2,6 @@
     session_start();
     session_unset();
     session_destroy();
-    header("Location: page_connexion.php");
+    header("Location: form_connexion.php");
     exit();
 ?>
