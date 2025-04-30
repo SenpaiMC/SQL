@@ -72,8 +72,10 @@
 
     <section>
         <div>
-            <form action="fonction.php" method="post">
+            <form action="fonction.php" method="POST" enctype="multipart/form-data">
                 <label for="document">Ajouter un dossier:</label>
+                <label for="register-username">Nom de série:</label>
+                <input type="text" id="name" name="name" placeholder="Solo leveling..." required>
                 <label for="type">Type:</label>
                     <!-- <input type="type" id="type" name="type" placeholder="Manga, Webtoon..." required> -->
                     <select inputmode="text" name="type" id="type" required>
