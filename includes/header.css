@@ -52,8 +52,8 @@ header {
 
 
 #logo6 img{
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 20%;
@@ -95,4 +95,13 @@ header {
 .recherche-btn img:hover {
     color: #fff;
     transform: scale(1.1);
+}
+
+#admin{
+    width: 20%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: blue; */
 }

@@ -1,3 +1,4 @@
+<?php require_once('includes/header.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -89,6 +90,7 @@
                 <input type="hidden" name="type" value="<?php echo htmlspecialchars($_POST['type'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                 <button type="submit" name="upload_document">Ajouter</button>
             </form>
+            <a href="deconnexion.php">Deconnexion</a>
         </div>
     </section>    
     

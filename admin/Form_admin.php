@@ -1,3 +1,4 @@
+<?php require_once('SQL - Copie\includes\header.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -33,7 +34,7 @@
             <p>Veuillez entrer vos identifiants pour accéder à l'interface d'administration.</p>
         </div>
         <div class="formulaire" id="zone-connexion">
-            <h2>Connexion</h2>
+            <h2>Rajouter un admin</h2>
             <form action="admin_inscription.php" method="POST">
                 <div class="input-groupe">
                     <!-- Pseudo -->

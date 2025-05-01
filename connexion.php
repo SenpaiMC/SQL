@@ -40,8 +40,7 @@
 
 <?php
 include 'connex_bdd.php';
- // Inclure le fichier de connexion à la base de données
-session_start(); // Démarrer la session
+ // Inclure le fichier de connexion à la base de données // Démarrer la session
 // Inclure le fichier de connexion à la base de données
 // Inclure le fichier de connexion à la base de données
 // Connexion réussie (commented out to prevent output before header redirection)

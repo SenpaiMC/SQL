@@ -16,6 +16,7 @@ session_start();
     <title>Mon site</title>
 </head>
 <body>
+
     <header>
 
         <?php if (isset($_SESSION['utilisateur_nom'])): ?>
@@ -30,7 +31,7 @@ session_start();
 
             <div class="logo-container" id="logo2"> 
                 <form class="recherche" action="fonction.php" method="GET">
-                    <input type="text" name="search" class="barre-de-recherche"  placeholder="Rechercher...">
+                    <input type="text" name="search" class="barre-de-recherche" id="search"  placeholder="Rechercher...">
                     <button type="submit" class="recherche-btn"><img src="logo\search.png" alt=""></button>
                 </form>
             </div>
@@ -48,10 +49,50 @@ session_start();
             </div>
         </div>
 
-        <?php else: ?>
-
+        <?php else : ?>
         
         <div class="logo">
+            <div class="logo-container" id="logo1"> 
+                <a href="index.php"><img src="logo\logo sakura_scan.png" alt=""></a>
+                
+            </div>
+            
+            
+            <div class="logo-container" id="logo2"> 
+                <form class="recherche" action="fonction.php" method="GET">
+                    <input type="text" name="search" class="barre-de-recherche"  placeholder="Rechercher...">
+                    <button type="submit" class="recherche-btn"><img src="logo\search.png" alt=""></button>
+                </form>
+            </div>
+            
+            <div class="logo-container" id="logo3"> 
+                <a href="page_connexion.php"><img src="logo\calendar.png" alt=""></a>
+            </div>
+            
+            <div class="logo-container" id="logo4"> 
+                <a href="page_connexion.php"><img src="logo\Serie.png" alt=""></a>
+            </div>
+            
+            <div class="logo-container" id="logo5"> 
+                <a href="form_connexion.php"><img src="logo\User.png" alt=""></a>
+            </div>
+        </div>
+
+        <?php endif; ?>
+
+
+        <?php if (isset($_SESSION['admin_nom'])): ?>
+            <div id="admin"> 
+                <a href="admin/Form_admin.php"><img src="logo\User.png" alt=""></a>
+            </div> 
+        </div>
+
+
+        <?php else: ?>
+            
+            <?php endif; ?>
+
+            <!-- <div class="logo">
             <div class="logo-container" id="logo1"> 
                 <a href="php.php"><img src="logo\logo sakura_scan.png" alt=""></a>
                 
@@ -76,12 +117,10 @@ session_start();
             <div class="logo-container" id="logo5"> 
                 <a href="form_connexion.php"><img src="logo\User.png" alt=""></a>
             </div>
-        </div>
+        </div> -->
+            
+            
+        </header>
         
-        <?php endif; ?>
-
-    </header>
-    
-    
-</body>
-</html>
+    </body>
+    </html>

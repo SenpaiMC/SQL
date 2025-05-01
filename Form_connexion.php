@@ -2,7 +2,7 @@
 <!-- <link rel="stylesheet" href="index_style.css"> -->
 <link rel="stylesheet" href="Global-form.css">
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
             <div class="input-groupe">
                 <!-- Mot de passe -->
                 <label for="login-password"></label>
-                <input type="mot_de_passe" id="login-password" name="mot_de_passe" placeholder="Mot de passe" required>
+                <input type="password" id="login-password" name="mot_de_passe" placeholder="Mot de passe" required>
             </div>
             <button type="submit">Se connecter</button>
         </form>
