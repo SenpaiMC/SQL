@@ -1,102 +1,85 @@
-<?php require_once('includes/header.php'); ?>
+<?php
+// Connexion à la base de données
+
+$conn = new mysqli('localhost', 'root', '', 'mon_site');
+
+if ($conn->connect_error) {
+    die("Connexion échouée : " . $conn->connect_error);
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Recherche de Séries</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .results p {
+            margin: 5px 0;
+        }
+    </style>
+    <script>
+        function searchSeries() {
+            const query = document.getElementById('search').value;
+            const resultsDiv = document.getElementById('results');
+
+            if (query.length > 0) {
+                fetch(`index.php?q=${encodeURIComponent(query)}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        resultsDiv.innerHTML = data;
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                    });
+            } else {
+                resultsDiv.innerHTML = '';
+            }
+        }
+    </script>
 </head>
 <body>
-    <section class="carousel">
-        <div class="slides">
-            <div class="slide">
-                <img src="image1.jpg" alt="Image 1">
-            </div>
-            <div class="slide">
-                <img src="image2.jpg" alt="Image 2">
-            </div>
-            <div class="slide">
-                <img src="image3.jpg" alt="Image 3">
-            </div>
-            <div class="slide">
-                <img src="image1.jpg" alt="Image 4">
-            </div>
-            <div class="slide">
-                <img src="image2.jpg" alt="Image 5">
-            </div>
-            <div class="slide">
-                <img src="image3.jpg" alt="Image 6">
-            </div>
-        </div>
-        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="next" onclick="moveSlide(1)">&#10095;</button>
-    </section>
+    <h1>Recherche de Séries</h1>
+    <input type="text" name=search id="search" onkeyup="searchSeries()" placeholder="Rechercher une série...">
+    <div id="results" class="results"></div>
+</body>
+</html>
 
-    <h2>Derniere sortie</h2>
+<?php
+// Vérification de la présence du paramètre 'q'
+if (isset($_GET['q'])) {
+    $query = $conn->real_escape_string($_GET['q']);
 
-    <section>
-        
-    </section>
+    // Requête pour rechercher les séries correspondant à la saisie
+    $sql = "SELECT * FROM series WHERE name LIKE '%$query%' LIMIT 10";
+    $result = $conn->query($sql);
 
-    <style>
-    .carousel {
-        position: relative;
-        max-width: 900px;
-        height: 600px;
-        overflow: hidden;
+    if ($result->num_rows > 0) {
+        // Affichage des résultats
+        while ($row = $result->fetch_assoc()) {
+            echo "<div>";
+            echo "<a href='essaie.php?id=" . htmlspecialchars($row['id']) . "' style='text-decoration:none;color:inherit;'>";
+            echo "<img src='" . htmlspecialchars($row['cover']) . "' alt='' style='width:100px;height:auto;'>";
+            echo "<p>" . htmlspecialchars($row['name']) . "</p>";
+            echo "</a>";
+            echo "</div>";
+        }
+    } else {
+        echo "<p>Aucun résultat trouvé</p>";
     }
-    .slides {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-    }
-    .slide {
-        min-width: 100%;
-        box-sizing: border-box;
-        background-color: brown;
-    }
-    .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-    button.prev, button.next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        z-index: 10;
-    }
-    button.prev {
-        left: 10px;
-    }
-    button.next {
-        right: 10px;
-    }
-    </style>
+}
 
-    <script>
-    let currentSlide = 0;
-
-    function moveSlide(direction) {
-        const slides = document.querySelector('.slides');
-        const totalSlides = slides.children.length;
-
-        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-
-    function autoSlide() {
-        moveSlide(1);
-    }
-
-    setInterval(autoSlide, 7000); // Change slide tout les 7 secondes
-
-    </script>
+$conn->close();
+?>
 
 </body>
 </html>

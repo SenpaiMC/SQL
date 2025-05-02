@@ -27,7 +27,8 @@
             
             echo "Connexion réussie!";
             // Redirection vers l'espace utilisateur après connexion
-            header("Location: espace_user.php");
+            header("Location:espace_user.php");
+            
             exit();
         } else {
             echo "Nom d'utilisateur ou mot de passe incorrect.";
@@ -78,7 +79,7 @@ include 'connex_bdd.php';
             $_SESSION['admin_nom'] = $admin['nom'];
             $_SESSION['mot_de_passe'] = $admin['mot_de_passe'];
             // Redirection vers l'espace administrateur après connexion
-            header("Location: page_d'upload.php");
+            header("Location: C:\Users\utilisateur\Documents\Sakura-scan\espace_user.php");
             exit();
         }
          else {

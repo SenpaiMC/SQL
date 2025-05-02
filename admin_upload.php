@@ -1,3 +1,18 @@
+                <?php
+                // Connexion à la base de données
+                try {
+                    $pdo = new PDO('mysql:host=localhost;dbname=mon_site', 'root', '');
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    // Récupérer les noms depuis la base de données
+                    $stmt = $pdo->query('SELECT name FROM series');
+                    $titreResults = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                } catch (PDOException $e) {
+                    echo 'Erreur de connexion : ' . $e->getMessage();
+                    exit;
+                }
+                ?>
+<?php $genres = ["","Action","Aventure","Comédie","Drame","Fantastique","Horreur","Romance","Science-fiction","Autre","Système"]; ?>
 <?php require_once('includes/header.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -11,7 +26,7 @@
     <section id="profil">
         <div class="formulaire" id="zone-inscription">
             <h2>Création de compte</h2>
-            <form action="page_de_serie.php" method="POST" enctype="multipart/form-data">
+            <form action="admin_serie.php" method="POST" enctype="multipart/form-data">
                 <div class="input-groupe">
                     <!-- Name -->
                     <label for="register-username">Nom de série:</label>
@@ -32,17 +47,22 @@
                     <!-- Genre -->
                     <label for="genre">Genre:</label>
                     <!-- <input type="text" id="genre" name="genre" placeholder="Action, Aventure..." required> -->
-                    <select inputmode="text" name="genre" id="genre" required>
-                        <option value="Action">Action</option>
-                        <option value="Aventure">Aventure</option>
-                        <option value="Comédie">Comédie</option>
-                        <option value="Drame">Drame</option>
-                        <option value="Fantastique">Fantastique</option>
-                        <option value="Horreur">Horreur</option>
-                        <option value="Romance">Romance</option>
-                        <option value="Science-fiction">Science-fiction</option>
-                        <option value="Autre">Autre</option>
+                    <select inputmode="text" name="genre1" id="genre" required>
+                        <?php foreach ($genres as $genre): ?>
+                            <option value="<?php echo htmlspecialchars($genre, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($genre, ENT_QUOTES, 'UTF-8'); ?></option>
+                        <?php endforeach; ?>
                     </select>
+                    <select inputmode="text" name="genre2" id="genre" required>
+                        <?php foreach ($genres as $genre): ?>
+                            <option value="<?php echo htmlspecialchars($genre, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($genre, ENT_QUOTES, 'UTF-8'); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <select inputmode="text" name="genre3" id="genre" required>
+                        <?php foreach ($genres as $genre): ?>
+                            <option value="<?php echo htmlspecialchars($genre, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($genre, ENT_QUOTES, 'UTF-8'); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    
                 </div>
                 <div class="input-groupe">
                     <!-- Synopsis -->
@@ -65,6 +85,14 @@
                 </div>
 
                 <button type="submit">Envoyer</button>
+<
+                <select inputmode="text" name="genre1" id="genre" required>
+                    <?php foreach ($titreResults as $titre): ?>
+                        <option value="<?php echo htmlspecialchars($titre['name'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <?php echo htmlspecialchars($titre['name'], ENT_QUOTES, 'UTF-8'); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </form>
 
     </section>
@@ -91,6 +119,7 @@
                 <button type="submit" name="upload_document">Ajouter</button>
             </form>
             <a href="deconnexion.php">Deconnexion</a>
+            
         </div>
     </section>    
     

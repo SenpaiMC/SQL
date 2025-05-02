@@ -39,7 +39,7 @@ session_start(); // Démarrer la session
             $_SESSION['admin_nom'] = $admin['nom'];
             $_SESSION['mot_de_passe'] = $admin['mot_de_passe'];
             // Redirection vers l'espace administrateur après connexion
-            header("Location: page_d'upload.php");
+            header("Location: admin_upload.php");
             exit();
         }
          else {

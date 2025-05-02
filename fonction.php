@@ -42,9 +42,77 @@
     include 'connex_bdd.php';
     session_start();
 
+    ?>
+    <!-- <script>
+        function searchSeries() {
+            const query = document.getElementById('search').value;
+            const resultsDiv = document.getElementById('results');
+
+            if (query.length > 0) {
+                fetch(`index.php?q=${encodeURIComponent(query)}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        resultsDiv.innerHTML = data;
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                    });
+            } else {
+                resultsDiv.innerHTML = '';
+            }
+        }
+    </script> -->
+    <?php
+
+    if (isset($_GET['search'])) {
+        $query = $conn->real_escape_string($_GET['search']);
+    
+        // Requête pour rechercher les séries correspondant à la saisie
+        $sql = "SELECT * FROM series WHERE name LIKE '%$query%' LIMIT 10";
+        $result = $conn->query($sql);
+    
+        if ($result->num_rows > 0) {
+            // Affichage des résultats
+            while ($row = $result->fetch_assoc()) {
+                echo "<div id='result'>";
+                echo "<div id=tt> <p>" . htmlspecialchars($row['name']) . "</p> </div>";
+                echo "<div id=tt> <img src='" . htmlspecialchars($row['cover']) . "'> </div>";
+                echo "</div>";
+            }
+        } else {
+            echo "<p>Aucun résultat trouvé</p>";
+        }
+    }
+    
+    $conn->close();
+    ?>
+<style>
+    #result {
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    #tt {
+        width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: #c0c264; */
+    }
+</style>
 
 
 
+<?php
+    include 'connex_bdd.php';
+    session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérification si un fichier a été téléchargé

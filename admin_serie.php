@@ -13,7 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Récupération des données du formulaire
         $name = htmlspecialchars($_POST['name']);
         $type = htmlspecialchars($_POST['type']);
-        $genre = htmlspecialchars($_POST['genre']);
+        $genre1 = htmlspecialchars($_POST['genre1']);
+        $genre2 = htmlspecialchars($_POST['genre2']);
+        $genre3 = htmlspecialchars($_POST['genre3']);
         $synopsie = htmlspecialchars($_POST['synopsie']);
 
         
@@ -41,12 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (move_uploaded_file($fileTmpPath, $filePath)) {
                 // Insertion dans la base de données
-                $sql = "INSERT INTO series (name, type, genre, synopsie, cover) VALUES (:name, :type, :genre, :synopsie, :cover)";
+                $sql = "INSERT INTO series (name, type, genre1, genre2, genre3, synopsie, cover) VALUES (:name, :type, :genre1, :genre2, :genre3, :synopsie, :cover)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([
                     ':name' => $name,
                     ':type' => $type,
-                    ':genre' => $genre,
+                    ':genre1' => $genre1,
+                    ':genre2' => $genre2,
+                    ':genre3' => $genre3,
                     ':synopsie' => $synopsie,
                     ':cover' => $filePath
                 ]);
