@@ -120,10 +120,41 @@ session_start();
                         </div>
 
                         <div class="logo-container" id="logo2"> 
-                            <form class="recherche" action="fonction.php" method="GET">
+                            <!-- <form class="recherche" action="fonction.php" method="GET">
                                 <input type="text" name="search" class="barre-de-recherche" placeholder="Rechercher...">
                                 <button type="submit" class="recherche-btn"><img src="logo\search.png" alt=""></button>
-                            </form>
+                            </form> -->
+                            <?php
+// Connexion à la base de données
+$host = 'localhost';
+$dbname = 'mon_site';
+$username = 'root';
+$password = '';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+
+// Si une requête AJAX est envoyée
+if (isset($_GET['query'])) {
+    $query = $_GET['query'];
+    $stmt = $pdo->prepare("SELECT * FROM series WHERE name LIKE :query LIMIT 10");
+    $stmt->execute(['query' => "%$query%"]);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($results);
+    exit;
+}
+?>
+
+                            <script src="zauto.js"></script>
+    <h1>Recherche avec auto-suggestion</h1>
+    <form class="recherche" action="fonction.php" method="GET">
+    <input type="text" id="search" name="search" onkeyup="searchSuggestions()" placeholder="Rechercher..." autocomplete="off">
+    <div id="suggestions"></div>
+    </form>
                         </div>
 
                         <div class="logo-container" id="logo3"> 

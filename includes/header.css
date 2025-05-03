@@ -126,3 +126,26 @@ header {
     align-items: center;
     /* background-color: blue; */
 }
+
+#suggestions {
+    border: 1px solid #ccc;
+    max-width: 300px;
+    position: absolute;
+    background: white;
+    z-index: 1000;
+}
+#suggestions div {
+    padding: 8px;
+    cursor: pointer;
+}
+#suggestions div:hover {
+    background: #f0f0f0;
+}
+
+#search {
+    width: 200px;
+    transition: width 0.3s ease;
+}
+#search:focus {
+    width: 300px;
+}
