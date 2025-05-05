@@ -1,0 +1,35 @@
+#espace_user {
+    background-color: #1E1E1E;
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 5%;
+    margin-top: 5%;
+    color: black;
+}
+
+#espace_user img {
+    margin-left: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+
+h2{
+    color: black;
+}
+
+p {
+    color: white;
+    font-size: 32px;
+    margin-left: 3%;
+}
